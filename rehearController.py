@@ -4,19 +4,37 @@ import pyaudio
 import wave
 
 filename = 'bufferFile.wav'
-# set sample size
+# set chunk (of samples) size
 chunkSize = 1024
 
 waveFile = wave.open(filename, 'rb')
 
 port = pyaudio.PyAudio()
-
+:
 # make a stream
 stream = port.open(format = port.get_format_from_width(waveFile.getsampwidth()), channels = wf.getnchannels(), rate = waveFile.getframerate(), output = True)
 
 # read data in samples
 data = waveFile.readframes(sampleSize)
+def play(wav_file):
+	sample_width = wav_file.getsampwidth()
+	format_type - port.get_format_from_width(sample_width)
+	n_channels = wav_file.getnchannels()
+	bit_rate = wav_file.getframerate()
 
+
+	stream = port.open(format_type, n_channels, bit_rate, output = True)
+	
+
+	data = wave_file.readframes(chunkSize)
+	
+	while data != '':
+		stream.write(data)
+		data = wave_file.readframes(chunkSize)
+	stream.close()
+	
+	return(0)
+ 
 def record(button_not_pressed):
 	sample_format = pyaudio.paInt16 # use 16-bit audio
 	sample_rate = 44100 # CD quality audio.  Remember CDs?
@@ -52,6 +70,7 @@ def record(button_not_pressed):
 	return(frames)
 
 
-		
+waveFile.close()
+	
 	
 		
