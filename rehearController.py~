@@ -39,15 +39,11 @@ def set_sample_width(wav_file, sample_width):
         print('Wave error! Wave bye bye!')
     finally:
         return wav_file
-    
+
 def set_frame_rate(wav_file, frame_rate):
     try:
         wav_file.setframerate(frame_rate)
-    except wave.Error:
-        print('Wave error! Bye bye')
-    finally:
-        return wav_file
-
+    
 
 def build_stream(wav_file, output = True):
     port = pyaudio.PyAudio()
