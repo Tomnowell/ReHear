@@ -1,10 +1,10 @@
 # ReHear
 An audio accessibility app for those who may sometimes miss things.
 
-##WARNING PROTOTYPE
+## WARNING PROTOTYPE
 This app is currently in the prototype phase.
 
-##Overview
+## Overview
 This app is designed for people who sometimes miss things or mishear things
  in conversations, or in everyday life.  It is designed to be a simple 'replay button' so the user
 can quickly and easily replay the previous 30 seconds of audio.
