@@ -9,16 +9,16 @@ chunkSize = 1024
 sampleSize = 44100
 
 
-waveFile = wave.open(filename, 'rb')
+wave_file = wave.open(filename, 'rb')
 
 port = pyaudio.PyAudio()
 
 # make a stream
-stream = port.open(format=port.get_format_from_width(waveFile.getsampwidth(
-)), channels=wf.getnchannels(), rate=waveFile.getframerate(), output=True)
+# stream = port.open(format=port.get_format_from_width(waveFile.getsampwidth(
+# )), channels=wf.getnchannels(), rate=waveFile.getframerate(), output=True)
 
 # read data in samples
-data = waveFile.readframes(sampleSize)
+# data = waveFile.readframes(sampleSize)
 
 
 # wrap some wave open and close functions because we may change this functionality later
@@ -65,8 +65,7 @@ def build_stream(wav_file, output=True):
     return stream
 
 
-def play(filename):
-
+def play(wav_file):
     stream = build_stream(wav_file)
 
     # Load initial chunk
@@ -78,7 +77,6 @@ def play(filename):
 
     stream.close()
 	print('Stopped playing')
-
 	return(0)
 
 
@@ -91,7 +89,7 @@ def record(button_not_pressed):
 	stream = port.open(format=sample_format, channels=channels,
 	                   rate=sample_rate, frames_per_buffer=chunkSize, input=True)
 	frames = []
-	int i = 0
+	i = 0
 	while(button_not_pressed):  # replace with event handler
 
 		# First fill a 30 second buffer
@@ -104,7 +102,7 @@ def record(button_not_pressed):
 			frame.pop(0)
 			frame.append(data)
 
-		i++
+		i += 1
 
 	# button pressed logic
 	stream.stop_stream()
@@ -116,6 +114,4 @@ def record(button_not_pressed):
 	print('Stopped Recording')
 
 	return(frames)
-
-
-waveFile.close()
+	waveFile.close()
